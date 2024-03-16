@@ -8,8 +8,12 @@ using LibraryCopy.Data.Entities;
 
 namespace LibraryCopy.Data.DAO {
     public class MainDBcontext : DbContext {
-        public MainDBcontext(DbContextOptions options) : base(options) { }
+        public MainDBcontext(DbContextOptions<MainDBcontext> options) : base(options) { }
 
         public DbSet<LibraryEntity> Libraries { get; set; }
+
+        public DbSet<AuthorEntity> Authors { get; set; }
+
+        public DbSet<BookEntity> Books { get; set; }
     }
 }

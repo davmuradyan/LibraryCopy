@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryCopy.Data.Entities {
-    public abstract record BaseEntity {
-        public int Id { get; set; }
-
-        public required bool isDeleted { get; set; }
+    public record AuthorEntity : BaseEntity {
+        required public string Name { get; set; }
     }
 }

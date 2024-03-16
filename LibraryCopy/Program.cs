@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using LibraryCopy.Data.DAO;
+using LibraryCopy.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ILibraryService, LibraryService>();
+builder.Services.AddDbContext<MainDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnectionString")));
+
+
 var app = builder.Build();
 
-builder.Services.AddDbContext<MainDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnectionString")));
 
 
 // Configure the HTTP request pipeline.
